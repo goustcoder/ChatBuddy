@@ -16,21 +16,21 @@ const Navbar = () => {
         <div className="col-span-6 hidden     xl:flex justify-center items-center gap-10 text-xl ">
           {["Home", "How It Works", "Features", "Pricing", "FAQ"].map(
             (item, index) => (
-              <Link
+              <a
                 className="text-[#fff] hover:text-pink-400 cursor-pointer"
                 id={index}
-                to={`/${item.toLowerCase().replace(/\s+/g, '-')}`} 
+                href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
               >
                 {item}
-              </Link>
+              </a>
             )
           )}
         </div>
         <div className="xl:col-span-3 hidden  xl:flex justify-center items-center gap-4">
           <Link to="/signup">
-          <button className="cursor-pointer ml-7 bg-transparent border-2 border-pink-500 text-pink-500 font-semibold py-2 px-6 rounded-full hover:bg-pink-500 hover:text-white transition duration-300 shadow-md">
-            SignUp
-          </button>
+            <button className="cursor-pointer ml-7 bg-transparent border-2 border-pink-500 text-pink-500 font-semibold py-2 px-6 rounded-full hover:bg-pink-500 hover:text-white transition duration-300 shadow-md">
+              SignUp
+            </button>
           </Link>
         </div>
 
@@ -44,18 +44,18 @@ const Navbar = () => {
           <div className="w-screen h-screen bg-zinc-600 flex justify-self-start pt-10 items-center flex-col m-auto gap-2 transition-all duration-300 ease-out opacity-100 scale-100">
             {["Home", "How It Works", "Features", "Pricing", "FAQ"].map(
               (item, index) => (
-                <Link
+                <a
                   className="text-[#fff] hover:text-pink-400 cursor-pointer text-[1rem] sm:text-2xl lg:text-3xl transition-all duration-300 ease-in-out"
                   id={index}
-                  to={`/${item.toLowerCase().replace(/\s+/g, '-')}`} 
+                  href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
                 >
                   {item}
-                </Link>
+                </a>
               )
             )}
 
             <button className="cursor-pointer bg-transparent border-2 border-pink-500 text-pink-500 font-semibold py-2 px-6 rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 shadow-md">
-              <Link to="/signup" >SignUp</Link>
+              <Link to="/signup">SignUp</Link>
             </button>
           </div>
         )}
