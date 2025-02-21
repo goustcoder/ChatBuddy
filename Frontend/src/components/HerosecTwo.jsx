@@ -10,7 +10,7 @@ const HerosecTwo = () => {
   ];
 
   return (
-    <div className=" w-full  bg-gradient-to-r from-black to-purple-900 py-20 px-10 grid grid-cols-1 lg:grid-cols-2 gap-10">
+    <div className=" w-full  bg-gradient-to-b from-[#000] to-[#0d0319] py-20 px-10 grid grid-cols-1 lg:grid-cols-2 gap-10">
       <div className="left   min-h-[400px] ">
         <h1 className="text-3xl md:text-6xl text-center lg:text-left font-bold text-white mb-6">
           Find Your Perfect AI Companion
