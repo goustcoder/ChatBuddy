@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.3.0",
     "@shadcn/ui": "^0.0.4",
     "@tailwindcss/vite": "^4.0.6",
+    "axios": "^1.7.9",
     "framer-motion": "^12.4.5",
     "lucide-react": "^0.475.0",
     "react": "^19.0.0",

@@ -1,10 +1,56 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HiBars3 } from "react-icons/hi2";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import axios from 'axios';
 
 const Navbar = () => {
   const [menuicon, setmenuicon] = useState(false);
-  console.log(menuicon);
+  const url = "http://localhost:8080/v1/api/user"
+  const {
+    loginWithRedirect,
+    user,
+    isAuthenticated,
+    logout,
+    getAccessTokenSilently,
+  } = useAuth0();
+
+  useEffect(()=>{
+    const storeUser = async()=>{
+      if(isAuthenticated && !localStorage.getItem("userStored")){
+        try {
+          const token = await getAccessTokenSilently();
+          const response = await axios.post(
+            url,{
+              email:user.email,
+              name:user.name,
+
+            },
+            {
+              headers :{
+                Authorization:`Bearer ${token}`,
+                "Content-Type":"application/json",
+              }
+            }
+          );
+          console.log(response);
+          console.log(user);
+          localStorage.setItem("userStored","true");
+          localStorage.setItem("nickname",user.nickname);
+        } catch (error) {
+          console.error(
+            "Error storing user:",
+            error.response?.data?.message || error.message
+          );
+          haddleError(error.response?.data?.message);
+        }
+      }
+    };
+
+    storeUser();
+
+  },[isAuthenticated,getAccessTokenSilently,user,url]);
+  
   return (
     <>
       <div className="w-full  bg-black min-h-24 grid-cols-12 grid">
@@ -27,11 +73,13 @@ const Navbar = () => {
           )}
         </div>
         <div className="xl:col-span-3 hidden  xl:flex justify-center items-center gap-4">
-          <Link to="/signup">
-            <button className="cursor-pointer ml-7 bg-transparent border-2 border-pink-500 text-pink-500 font-semibold py-2 px-6 rounded-full hover:bg-pink-500 hover:text-white transition duration-300 shadow-md">
-              SignUp
+          
+          <button 
+            onClick={()=>loginWithRedirect()}
+            className="cursor-pointer bg-transparent border-2 border-pink-500 text-pink-500 font-semibold py-2 px-6 rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 shadow-md">
+              <p>SignUp</p>
             </button>
-          </Link>
+          
         </div>
 
         <div className="col-span-2 flex justify-center items-center   xl:hidden">
@@ -54,8 +102,10 @@ const Navbar = () => {
               )
             )}
 
-            <button className="cursor-pointer bg-transparent border-2 border-pink-500 text-pink-500 font-semibold py-2 px-6 rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 shadow-md">
-              <Link to="/signup">SignUp</Link>
+            <button 
+            onClick={()=>loginWithRedirect()}
+            className="cursor-pointer bg-transparent border-2 border-pink-500 text-pink-500 font-semibold py-2 px-6 rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 shadow-md">
+              <p>SignUp</p>
             </button>
           </div>
         )}

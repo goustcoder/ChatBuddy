@@ -5,19 +5,19 @@ const FAQ = () => {
     const faqs = [
         {
             question: 'How does the 10-minute free trial work?',
-            answer: "You'll get 10 minutes of free chat time with your chosen AI companion. During this time, you can experience the full features of our service and see how well your companion understands and responds to you."
+            answer: "You'll get 10 minutes of free chat time with your chosenChat Buddy. During this time, you can experience the full features of our service and see how well your companion understands and responds to you."
         },
         {
-            question: 'How do I customize my AI companion’s personality?',
-            answer: "You can customize your AI companion's personality through advanced settings in the Premium plan."
+            question: 'How do I customize myChat Buddy’s personality?',
+            answer: "You can customize yourChat Buddy's personality through advanced settings in the Premium plan."
         },
         {
             question: 'Is my conversation data secure and private?',
             answer: 'Yes, all your conversations are encrypted and stored securely to maintain your privacy.'
         },
         {
-            question: 'Can I switch AI companions after choosing one?',
-            answer: 'Yes, you can switch between different AI companions at any time from your dashboard.'
+            question: 'Can I switchChat Buddys after choosing one?',
+            answer: 'Yes, you can switch between differentChat Buddys at any time from your dashboard.'
         },
         {
             question: 'What payment methods do you accept?',
@@ -34,7 +34,7 @@ const FAQ = () => {
     return (
         <div className='bg-gradient-to-b from-[#000000] to-[#0d0319] py-10 px-4' id="faq">
             <h2 className='text-4xl text-white font-bold text-center mb-4'>Frequently Asked Questions</h2>
-            <p className='text-xl text-zinc-400 text-center mb-10'>Get answers to common questions about our AI companion service</p>
+            <p className='text-xl text-zinc-400 text-center mb-10'>Get answers to common questions about ourChat Buddy service</p>
             <div className='max-w-3xl mx-auto space-y-4'>
                 {faqs.map((faq, index) => (
                     <div key={index} className='bg-zinc-800 p-4 rounded-xl shadow-md'>
